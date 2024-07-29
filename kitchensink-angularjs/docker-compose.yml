@@ -37,6 +37,17 @@ services:
       - srvdb
     networks:
       - demo_kcs_net
+  
+  nginx-proxy:
+    image: nginx:1.26.1
+    ports:
+      - 9090:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf 
+    depends_on:
+      - srvwildfly
+    networks:
+      - demo_kcs_net
 
 networks:
   demo_kcs_net:
